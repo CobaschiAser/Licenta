@@ -1,0 +1,5 @@
+.login-form {
+    border: 3px solid #ced4da; /* Border color */
+    padding: 20px; /* Add padding to the form */
+    border-radius: 20px; /* Add border-radius for rounded corners */
+}

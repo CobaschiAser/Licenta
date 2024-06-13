@@ -1,0 +1,108 @@
+
+.ItemList {
+    text-align: center;
+}
+
+.ItemList-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+
+.ItemList-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.ItemList-table th,
+.ItemList-table td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+}
+
+.ItemList-table th {
+    background-color: #282c34;
+    color: white;
+}
+
+.ItemList-table .editButton {
+    background-color: #61dafb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.ItemList-table .editButton:hover {
+    background-color: #4399cc;
+    /* Adjust hover effect color as needed */
+}
+
+.ItemList-table .deleteButton {
+    background-color: crimson;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.ItemList-table .deleteButton:hover {
+    background-color: indianred;
+    /* Adjust hover effect color as needed */
+}
+
+.ItemList-header .createButton {
+    background-color: forestgreen;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.ItemList-header .createButton:hover {
+    background-color: darkolivegreen;
+}
+
+.ItemList-header .viewButton {
+    background-color: burlywood;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.ItemList-header .viewButton:hover {
+    background-color: bisque;
+}
+
+.highlight {
+    color: red;
+}
