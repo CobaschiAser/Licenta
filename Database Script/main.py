@@ -54,13 +54,22 @@ def clear_db():
 
 def get_random_date():
     start_date = date(2024, 1, 1)
-    end_date = date(2024, 6, 2)
+    end_date = date(2024, 3, 1)
     time_between_dates = end_date - start_date
     days_between_dates = time_between_dates.days + 1
     random_number_of_days = random.randrange(days_between_dates)
     random_date = start_date + timedelta(days=random_number_of_days)
     return random_date
 
+
+def get_random_request_date():
+    start_date = date(2024, 3, 1)
+    end_date = date(2024, 3, 10)
+    time_between_dates = end_date - start_date
+    days_between_dates = time_between_dates.days + 1
+    random_number_of_days = random.randrange(days_between_dates)
+    random_date = start_date + timedelta(days=random_number_of_days)
+    return random_date
 
 names = []
 
@@ -364,8 +373,8 @@ def generate_a_request():
     if len(data_list) > 0:
         previous_date = data_list[len(data_list) - 1]
     else:
-        previous_date = user.registration_date
-    request_date = min(previous_date, user.registration_date) + timedelta(days=5)
+        previous_date = get_random_request_date()
+    request_date = min(previous_date, user.registration_date) + timedelta(days=1)
     data_list.append(request_date)
     start_hour = random.randint(1, 16)
     end_hour = random.randint(start_hour + 1, 23)
@@ -527,8 +536,8 @@ def generate_not_started_request():
     if len(data_list) > 0:
         previous_date = data_list[len(data_list) - 1]
     else:
-        previous_date = user.registration_date
-    request_date = min(previous_date, user.registration_date) + timedelta(days=5)
+        previous_date = get_random_request_date()
+    request_date = min(previous_date, user.registration_date) + timedelta(days=1)
     data_list.append(request_date)
     start_hour = random.randint(1, 16)
     end_hour = random.randint(start_hour + 1, 23)

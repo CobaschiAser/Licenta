@@ -100,6 +100,7 @@ public class ParkingServiceImpl implements ParkingService {
 
         Long sumAll = 0L;
 
+        // TODO ia doar requesturile finalizate in calcul
         for (Parking parking : parkings) {
             List<Long> parkingStatistics = this.findParkingStatistics(token, NOT_ALL, parking.getId(), period).getBody();
             if (parkingStatistics != null) {
@@ -109,9 +110,26 @@ public class ParkingServiceImpl implements ParkingService {
             }
         }
 
-        List<Vehicle> vehiclesCanBeMoved = vehicleRepository.findAll();
-        vehiclesCanBeMoved.removeIf(vehicle -> !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty());
+        List<Vehicle> vehiclesCanBeMoved = new ArrayList<>();
+        List<Vehicle> allVehicles = vehicleRepository.findAll();
+        // vehiclesCanBeMoved.removeIf(vehicle -> (!requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty() || !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()));
+        for (Vehicle vehicle : allVehicles) {
+            if (requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty() && requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()) {
+                vehiclesCanBeMoved.add(vehicle);
+                //System.out.println("REMOVE VEHICLE");
+            } else {
+                System.out.println(vehicle.getId());
+                if (requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()) == null) {
+                    System.out.println("NULL LIST OF REQUESTS");
+                } else {
+                    System.out.println("HERE");
+                    System.out.println(requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).size());
+                }
+            }
+        }
         Long nrVehiclesCanBeMoved = (long) vehiclesCanBeMoved.size();
+
+        System.out.println("CAN BE MOVED" + nrVehiclesCanBeMoved);
 
         for (Parking parking : parkings) {
             Long output = myMap.get(parking.getId());

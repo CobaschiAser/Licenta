@@ -53,7 +53,7 @@ public class VehicleServiceImpl implements VehicleService {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
         List<Vehicle> vehicles = vehicleRepository.findVehicleWithNullParking();
-        vehicles.removeIf(vehicle -> !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty());
+        vehicles.removeIf(vehicle -> (!requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty() && !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()));
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
@@ -65,10 +65,10 @@ public class VehicleServiceImpl implements VehicleService {
         List<Vehicle> vehicles = vehicleRepository.findVehicleByParkingId(parkingId);
         List<Vehicle> canBeRemoved = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-            if (requestRepository.findActiveRequestWithVehicle(vehicle.getId()) == null) {
+            if (requestRepository.findActiveRequestWithVehicle(vehicle.getId()) == null || requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()) == null) {
                 System.out.println("Null list");
             }
-            if (requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()) {
+            if (requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty() && requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty()) {
                 canBeRemoved.add(vehicle);
             }
         }
@@ -224,7 +224,11 @@ public class VehicleServiceImpl implements VehicleService {
         for(Vehicle vehicle: allVehicle) {
             // requests that vehicle is involved in that day ordered by startHour
             List<Request> requests = requestRepository.findByDateVehicle(vehicle.getId());
-
+            System.out.println("HERE REQUESTS IN ORDER");
+            for (Request request : requests) {
+                System.out.println("1234");
+                System.out.println(request.getId());
+            }
             String lastParkingName = null;
             // last request committed that day until that moment
 
@@ -249,8 +253,12 @@ public class VehicleServiceImpl implements VehicleService {
                 continue;
             }
 
+            if(!lastRequest.getStarted() && lastRequest.getDeparture().compareTo(departure) == 0) {
+                continue;
+            }
+
             // if lastRequest was finished, change the lastParkingName
-            if(lastRequest.getSolved()) {
+            if(lastRequest.getStarted()) {
                 lastParkingName = lastRequest.getArrival();
                 if(lastRequest.getDate().compareTo(date) < 0 && Objects.equals(lastParkingName, departure)) {
                     result.add(vehicle);

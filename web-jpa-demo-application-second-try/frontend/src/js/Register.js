@@ -25,7 +25,7 @@ const RegisterForm = () => {
     const [usernameError, setUsernameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const sanitizeUserInput = (userInput) => {
-        return userInput.replace(/[;\/\\]/g, '\\$&'); // Escape spaces, semicolons, forward slashes, and backslashes
+        return userInput.replace(/[;\/\\]/g, '\\$&');
     };
     const handleChange = (e) => {
         const { name, value } = e.target;

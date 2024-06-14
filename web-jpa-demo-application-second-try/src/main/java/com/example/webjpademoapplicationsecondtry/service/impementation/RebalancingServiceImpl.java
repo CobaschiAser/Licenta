@@ -112,9 +112,9 @@ public class RebalancingServiceImpl implements RebalancingService {
                             j++;
                             continue;
                         }
-                        else if (hierarchy.get(parkingId) - hierarchy.get(parkingJId) < canBeMovedFromJ.size()){
+                        else if (hierarchy.get(parkingId) - hierarchy.get(parkingJId) < canBeMovedFromJ.size()) {
                             //if (parking.getCurrentCapacity() <= canBeMovedFromJ.size() {
-                            {
+
                                 int idx;
                                 for (idx = 0 ; idx < hierarchy.get(parkingId) - hierarchy.get(parkingJId); idx ++) {
                                     Vehicle vehicle = canBeMovedFromJ.get(idx);
@@ -126,14 +126,15 @@ public class RebalancingServiceImpl implements RebalancingService {
                                         added++;
                                         swapCurrentParking(vehicle, parking, parkingJ);
                                     }
-                                    else{
+                                    else {
                                         j++;
                                         break;
                                     }
-                                }
+                                    j++;
                             }
                         } else {
-                            for (Vehicle vehicle : canBeMovedFromJ) {
+                            for (int index = 0; index < canBeMovedFromJ.size() - 1; index++) {
+                                Vehicle vehicle = canBeMovedFromJ.get(index);
                                 if (added < toAdd) {
                                     // Parking parkingJ = parkingRepository.findParkingById(parkingJId);
                                     Move move = new Move(parkingJ.getName(), parking.getName(), vehicle.getId());
@@ -142,9 +143,11 @@ public class RebalancingServiceImpl implements RebalancingService {
                                     added++ ;
                                     swapCurrentParking(vehicle, parking, parkingJ);
                                 } else {
+                                    j++;
                                     break;
                                 }
                             }
+                            j++;
                         }
                     } else {
                         break;

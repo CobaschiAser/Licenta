@@ -19,7 +19,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query("SELECT r FROM Request r WHERE r.owner.id = :id")
     List<Request> findRequestByUser(@Param("id") Long id);
 
-    @Query("SELECT r FROM Request r WHERE r.vehicleId = :vehicleId AND r.started AND not r.solved ORDER BY r.date,r.startHour")
+    @Query("SELECT r FROM Request r WHERE r.vehicleId = :vehicleId AND not r.started AND not r.solved ORDER BY r.date,r.startHour")
     List<Request> findByDateVehicle(@Param("vehicleId") Long vehicleId);
 
     @Query("SELECT r FROM Request r WHERE r.id = :id")
@@ -31,9 +31,13 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query("SELECT r FROM Request r WHERE r.departure =:name OR r.arrival=:name")
     List<Request> findRequestByParking(@Param("name") String name);
 
-    @Query("SELECT r FROM Request r WHERE r.id =:vehicleId AND NOT r.solved")
+    @Query("SELECT r FROM Request r WHERE r.id =:vehicleId AND not r.solved")
     List<Request> findUnsolvedRequestWithVehicle(@Param("vehicleId") Long vehicleId);
 
-    @Query("SELECT r FROM Request r WHERE r.id =:vehicleId AND r.started AND NOT r.solved")
+    @Query("SELECT r FROM Request r WHERE r.vehicleId =:vehicleId AND r.started AND not r.solved")
     List<Request> findActiveRequestWithVehicle(@Param("vehicleId") Long vehicleId);
+
+    @Query("SELECT r FROM Request r WHERE r.vehicleId =:vehicleId AND not r.started")
+    List<Request> findUnstartedRequestWithVehicle(@Param("vehicleId") Long vehicleId);
+
 }
