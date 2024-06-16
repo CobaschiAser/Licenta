@@ -4,20 +4,10 @@ const UserSidebar = ({username, userId}) => {
     const [vehicleSubMenuVisible, setVehicleSubMenuVisible] = useState(false);
     const [profileSubMenuVisible, setProfileSubMenuVisible] = useState(false);
     const [parkingSubMenuVisible, setParkingSubMenuVisible] = useState(false);
-    const toggleVehicleSubMenu = (event) => {
-        event.preventDefault();
-        setVehicleSubMenuVisible(!vehicleSubMenuVisible);
-    };
-
     const toggleProfileSubMenu = (event) => {
         event.preventDefault();
         setProfileSubMenuVisible(!profileSubMenuVisible);
     }
-    const toggleParkingSubMenu = (event) => {
-        event.preventDefault();
-        setParkingSubMenuVisible(!parkingSubMenuVisible);
-    }
-
     const toggleCreateRequest = (event) => {
         event.preventDefault();
         window.location.href = `/user/${userId}/create-request`
@@ -85,56 +75,19 @@ const UserSidebar = ({username, userId}) => {
                     )}
                 </li>
                 <li className="nav-item">
-                    <a href="#" onClick={toggleVehicleSubMenu} style={{color: 'darkslategray'}}>
+                    <a href="/vehicle?page=1" style={{color: 'darkslategray'}}>
                         <i className="bi bi-car-front me-3"></i>
-                        <span><strong>Vehicle</strong></span>
-                        {vehicleSubMenuVisible ? (
-                            <i className="bi bi-caret-up ms-auto"></i>
-                        ) : (
-                            <i className="bi bi-caret-down ms-auto"></i>
-                        )}
+                        <span><strong>Inspect Vehicles</strong></span>
                     </a>
-                    {vehicleSubMenuVisible && (
-                        <ul className="nav flex-column ps-5">
-                            <li className="nav-item">
-                                <a href="/vehicle?page=1" style={{color: 'darkslategray'}}>
-                                    <span>Inspect Vehicles</span>
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/vehicle/statistics/general" style={{color: 'darkslategray'}}>
-                                    <span>View Statistics</span>
-                                </a>
-                            </li>
-                        </ul>
-                    )}
                 </li>
 
                 <li className="nav-item">
-                    <a href="#" onClick={toggleParkingSubMenu} style={{color: 'darkslategray'}}>
+                    <a href="/parking?page=1" style={{color: 'darkslategray'}}>
                         <i className="bi bi-p-circle me-3"></i>
-                        <span><strong>Parking</strong></span>
-                        {parkingSubMenuVisible ? (
-                            <i className="bi bi-caret-up ms-auto"></i>
-                        ) : (
-                            <i className="bi bi-caret-down ms-auto"></i>
-                        )}
+                        <span><strong>Inspect Parkings</strong></span>
                     </a>
-                    {parkingSubMenuVisible && (
-                        <ul className="nav flex-column ps-5">
-                            <li className="nav-item">
-                                <a href="/parking?page=1" style={{color: 'darkslategray'}}>
-                                    <span>Inspect Parkings</span>
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/parking/statistics/general" style={{color: 'darkslategray'}}>
-                                    <span>View Statistics</span>
-                                </a>
-                            </li>
-                        </ul>
-                    )}
                 </li>
+
 
                 <li className="nav-item">
                     <a href = "#" onClick={toggleCreateRequest} style={{color: 'darkslategray'}}>

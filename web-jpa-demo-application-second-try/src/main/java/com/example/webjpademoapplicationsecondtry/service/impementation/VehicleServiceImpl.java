@@ -53,7 +53,7 @@ public class VehicleServiceImpl implements VehicleService {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
         List<Vehicle> vehicles = vehicleRepository.findVehicleWithNullParking();
-        vehicles.removeIf(vehicle -> (!requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty() && !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()));
+        vehicles.removeIf(vehicle -> (!requestRepository.findUnstartedRequestWithVehicle(vehicle.getId()).isEmpty() || !requestRepository.findActiveRequestWithVehicle(vehicle.getId()).isEmpty()));
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
