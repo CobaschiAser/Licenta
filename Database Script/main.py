@@ -577,7 +577,7 @@ def generate_not_started_request():
 def extract_user_names():
     global names
     url = 'https://randommer.io/api/Name?nameType=fullname&quantity=100'
-    api_key = "13288dad67bb478b96edd8c05deb6375"
+    api_key = ""
     headers = {"X-Api-Key": api_key}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
