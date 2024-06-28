@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Container} from "reactstrap";
 import FormCheckLabel from "react-bootstrap/FormCheckLabel";
 import {Form} from "react-bootstrap";
 import ParkingPieChart from "../charts/ParkingPieChart";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import VehiclePieChart from "../charts/VehiclePieChart";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const VehicleStatistics = () => {
 

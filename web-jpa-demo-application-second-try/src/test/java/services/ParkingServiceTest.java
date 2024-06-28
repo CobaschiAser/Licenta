@@ -36,17 +36,17 @@ public class ParkingServiceTest {
 
     @Mock
     VehicleRepository vehicleRepository;
-
     @Mock
     RequestRepository requestRepository;
 
-    @Mock
-    JwtUtil jwtutil;
     @InjectMocks
     ParkingServiceImpl parkingService;
 
     @InjectMocks
     VehicleServiceImpl vehicleService;
+
+    @Mock
+    JwtUtil jwtutil;
 
     private Parking parking;
 

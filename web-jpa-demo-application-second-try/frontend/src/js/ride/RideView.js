@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/View.css';
 import {Link, useHistory} from "react-router-dom";
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Button, Container} from "react-bootstrap";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
 import {CENTER, GOOGLE_MAP_KEY} from "../../constants/constants";
 import {DirectionsRenderer, GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const RideView = ({ rideId, userId }) => {
 
@@ -210,12 +210,12 @@ const RideView = ({ rideId, userId }) => {
                     <br/>
                     <div className="d-flex align-items-center justify-content-between">
                         <label className="font-weight-bold">Distance:</label>
-                        <button> {rideData.distance} </button>
+                        {rideData.distance > 0 && <button> {rideData.distance.toFixed(2)} </button>}
                     </div>
                     <br/>
                     <div className="d-flex align-items-center justify-content-between">
                         <label className="font-weight-bold">Price:</label>
-                        <button> {rideData.price} </button>
+                        {rideData.price > 0 && <button> {rideData.price.toFixed(2)} </button>}
                     </div>
                     <br/>
                     <div className="d-flex justify-content-center">

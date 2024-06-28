@@ -3,10 +3,10 @@ import React, {Component, useEffect, useState} from 'react';
 import {Link, useHistory, useLocation} from 'react-router-dom';
 import {Button, Container} from 'reactstrap';
 import '../../css/ItemList.css';
-import AppNavbar from "../AppNavbarBeforeLogin";
-import AppFooter from "../AppFooter";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 
 const UserListRides = ({ userId }) => {

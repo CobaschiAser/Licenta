@@ -1,13 +1,13 @@
 import '../../css/ItemList.css';
 import React, {useEffect, useRef, useState} from 'react';
 import {Container} from 'reactstrap';
-import AppNavbar from "../AppNavbarBeforeLogin";
-import AppFooter from "../AppFooter";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
+import AppFooter from "../navbar_footer/AppFooter";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ChartComponent from "../charts/UserGeneralPieChart";
 import UserGeneralChartComponent from "../charts/UserGeneralPieChart";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const UserGeneralStatistic = () => {
 

@@ -2,7 +2,6 @@ package com.example.webjpademoapplicationsecondtry.service;
 
 
 import com.example.webjpademoapplicationsecondtry.entity.Vehicle;
-import io.swagger.models.Response;
 import org.springframework.http.ResponseEntity;
 
 import java.sql.Date;

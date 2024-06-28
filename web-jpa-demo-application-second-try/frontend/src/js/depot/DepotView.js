@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../../css/View.css';
 import {Button, Container, Form} from "react-bootstrap";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
-import AppFooter from "../AppFooter";
-import MyNavbar from "../MyNavbar";
+import AppFooter from "../navbar_footer/AppFooter";
+import MyNavbar from "../navbar_footer/MyNavbar";
 import {jwtDecode} from "jwt-decode";
 import {CENTER, GOOGLE_MAP_KEY} from "../../constants/constants";
 const DepotView = () => {

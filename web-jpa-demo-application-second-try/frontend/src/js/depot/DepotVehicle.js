@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container } from 'reactstrap';
-import AppNavbar from "../AppNavbarBeforeLogin";
-import AppFooter from "../AppFooter";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
+import AppFooter from "../navbar_footer/AppFooter";
 import {useHistory, useLocation} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const DepotVehicles = () => {
 
@@ -222,9 +222,10 @@ const DepotVehicles = () => {
     return (
         <div style={{display:"flex", flexDirection: "column", minHeight:"100vh"}}>
             <MyNavbar/>
-            <Container className="mt-5" style={{flex:1, marginBottom: '7vh'}}>
+            {vehiclesForPage.length !== 0 &&
+                <Container className="mt-5" style={{flex:1, marginBottom: '7vh'}}>
                 <h2 className="mb-4 text-center">Vehicles of {depot ? depot.name : ''}</h2>
-                <div className="sorting-and-searching-section" style={{display: "flex", justifyContent: "space-between"}}>
+                    <div className="sorting-and-searching-section" style={{display: "flex", justifyContent: "space-between"}}>
                     <div className="sorting-section">
                         <select value={sortBy} onChange={handleSortChange}>
                             <option value="numberPlate">Sort by Number Plate</option>
@@ -306,7 +307,11 @@ const DepotVehicles = () => {
                         </Button>
                     )}
                 </div>
-            </Container>
+            </Container>}
+            {vehiclesForPage.length === 0 &&
+            <Container className="mt-5" style={{flex:1, marginBottom: '7vh'}}>
+                <h2 className="mb-4 text-center">{depot ? depot.name : ''} has no vehicle</h2>
+            </Container>}
             <AppFooter/>
         </div>
     );

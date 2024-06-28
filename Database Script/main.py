@@ -71,6 +71,7 @@ def get_random_request_date():
     random_date = start_date + timedelta(days=random_number_of_days)
     return random_date
 
+
 names = []
 
 user_list = []
@@ -188,7 +189,7 @@ def get_random_vehicle_info():
 
     max_autonomy = random.randint(350, 500)
 
-    number_plate = "IS-" + "".join(random.choice(string.digits) for i in range(2)) + "".join(
+    number_plate = "IS-" + "".join(random.choice(string.digits) for i in range(2)) + "-" + "".join(
         random.choice(string.ascii_uppercase) for i in range(3))
 
     return make, model, number_plate, comfort, fabrication_year, price_comfort, price_distance, price_time, max_autonomy, type
@@ -486,7 +487,8 @@ def generate_a_request():
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute(
-             "UPDATE flux_parking SET output = %s WHERE id = %s", (parking_flux_departure.output, parking_flux_departure.id)
+            "UPDATE flux_parking SET output = %s WHERE id = %s",
+            (parking_flux_departure.output, parking_flux_departure.id)
         )
         connection.commit()
         cursor.close()

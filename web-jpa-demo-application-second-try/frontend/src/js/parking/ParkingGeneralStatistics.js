@@ -1,15 +1,15 @@
 import '../../css/ItemList.css';
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Container} from 'reactstrap';
-import AppNavbar from "../AppNavbarBeforeLogin";
-import AppFooter from "../AppFooter";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
+import AppFooter from "../navbar_footer/AppFooter";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ParkingPieChart from "../charts/ParkingPieChart";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
 import {Form} from "react-bootstrap";
 import FormCheckLabel from "react-bootstrap/FormCheckLabel";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 import {CENTER, GOOGLE_MAP_KEY} from "../../constants/constants";
 
 const ParkingStatistics = () => {

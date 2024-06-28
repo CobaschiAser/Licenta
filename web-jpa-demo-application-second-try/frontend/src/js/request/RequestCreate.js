@@ -3,10 +3,10 @@ import '../../css/CreateForm.css';
 import {Button, Container, Form, FormLabel} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import FormCheckLabel from "react-bootstrap/FormCheckLabel";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 import {CENTER, GOOGLE_MAP_KEY} from "../../constants/constants";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
 const NewRequestForm = ({userId}) => {

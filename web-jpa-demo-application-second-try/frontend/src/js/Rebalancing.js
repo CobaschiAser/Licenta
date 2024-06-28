@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "./MyNavbar";
+import MyNavbar from "./navbar_footer/MyNavbar";
 import {Button, Container} from "reactstrap";
 import FormCheckLabel from "react-bootstrap/FormCheckLabel";
 import {Form} from "react-bootstrap";
 import ParkingPieChart from "./charts/ParkingPieChart";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
-import AppFooter from "./AppFooter";
+import AppFooter from "./navbar_footer/AppFooter";
 import {CENTER, GOOGLE_MAP_KEY} from "../constants/constants";
 import VehiclePieChart from "./charts/VehiclePieChart";
 
@@ -215,7 +215,7 @@ const RebalancingPage = () => {
                                     ))}
                                 </select>
                             </div>
-                            <VehiclePieChart myMap={countMap}/>
+                            {statisticParking !== null && <VehiclePieChart myMap={countMap}/>}
                         </div>
                         }
                         {

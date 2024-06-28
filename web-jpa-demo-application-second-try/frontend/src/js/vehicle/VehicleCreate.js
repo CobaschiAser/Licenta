@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../../css/CreateForm.css';
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Button, Container, Form} from "react-bootstrap";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const NewVehicleForm = () => {
 

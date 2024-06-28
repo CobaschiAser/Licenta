@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/View.css';
 import {Link, useHistory} from "react-router-dom";
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Button, Container} from "react-bootstrap";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 const UserView = ({ userId }) => {
 
     const [error, setError] = useState(false);

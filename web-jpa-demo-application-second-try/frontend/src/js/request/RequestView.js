@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/View.css';
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Button, Container} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 import {CENTER, GOOGLE_MAP_KEY} from "../../constants/constants";
 import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
 const RequestView = ({ requestId , userId}) => {

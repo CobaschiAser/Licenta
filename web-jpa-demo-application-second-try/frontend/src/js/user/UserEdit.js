@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/EditForm.css';
 import App from "../../App";
-import AppNavbar from "../AppNavbarBeforeLogin";
+import AppNavbar from "../navbar_footer/AppNavbarBeforeLogin";
 import {Button, Container, Form} from "react-bootstrap";
-import AppFooter from "../AppFooter";
+import AppFooter from "../navbar_footer/AppFooter";
 import {jwtDecode} from "jwt-decode";
-import MyNavbar from "../MyNavbar";
+import MyNavbar from "../navbar_footer/MyNavbar";
 
 const EditUserForm = ({ userId }) => {
 

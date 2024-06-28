@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import '../css/Home.css';
-import AppNavbar from './AppNavbarBeforeLogin';
 import { Button, Container, Row, Col } from 'reactstrap';
-import Footer from "./AppFooter";
-import AppFooter from "./AppFooter";
-import AppNavbarAfterLogin from "./AppNavbarAfterLogin";
-import {jwtDecode} from "jwt-decode";
-import AppNavbarBeforeLogin from "./AppNavbarBeforeLogin";
-import MyNavbar from "./MyNavbar";
+import AppFooter from "./navbar_footer/AppFooter";
+import MyNavbar from "./navbar_footer/MyNavbar";
 
 const testimonials = [
     {
